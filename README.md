@@ -1,3 +1,3 @@
-# Solution to some 'classic' and 'not-classic' coding problems
+# Solutions to some 'classic' and 'not-classic' coding problems
 
 These are sourced from all over the place. Daily coding, cracking the coding interview, etc...
