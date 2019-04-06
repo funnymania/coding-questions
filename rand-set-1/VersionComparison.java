@@ -5,8 +5,8 @@ class VersionComparison {
       String version2
     ) {
         // parse into two lists
-        String[] list1 = version1.split(".");
-        String[] list2 = version2.split(".");
+        String[] list1 = version1.split("\\.");
+        String[] list2 = version2.split("\\.");
         
         // remove or ignore leading zeroes
         for (int i = 0; i < list1.length; i++) {
