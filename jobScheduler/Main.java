@@ -5,12 +5,9 @@ class Main {
     }
 
     Scheduler.schedule(
-      new Runnable() {
-        @Override
-        public void run() {
-          System.out.println("Your random value is: "
+      () -> {
+        System.out.println("Your random value is: "
             + Math.random());
-        }
       },
       1000
     );
