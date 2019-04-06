@@ -1,5 +1,4 @@
 class VersionComparison {
-    // TODO "0.1" "1.0" does not return 1
     public static int compareVersion(
       String version1,
       String version2
