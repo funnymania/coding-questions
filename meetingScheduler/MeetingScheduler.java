@@ -1,3 +1,6 @@
+import java.util.List;
+import java.util.ArrayList;
+
 class MeetingScheduler {
 
   // Returns number of rooms.
@@ -5,13 +8,13 @@ class MeetingScheduler {
     List<ClassTime> classes,
     List<List<ClassTime>> rooms
   ) {
-    bool roomFound = false;
+    boolean roomFound = false;
     if (classes.isEmpty()) {
-      return rooms.length;
+      return rooms.size();
     }
     
-    for (int i = 0; i < classes.length(); i++) {
-      for (int j = 0; j < rooms.length(); j++) {
+    for (int i = 0; i < classes.size(); i++) {
+      for (int j = 0; j < rooms.size(); j++) {
         if (!requiresAnotherRoom(classes.get(i), rooms.get(j))) {
           rooms.get(j).add(classes.get(i));
           roomFound = true;
@@ -25,12 +28,12 @@ class MeetingScheduler {
       }
     }
 
-    return rooms.length;
+    return rooms.size();
   }
 
-  public static bool requiresAnotherRoom (ClassTime check, List<ClassTime> room) {
+  public static boolean requiresAnotherRoom (ClassTime check, List<ClassTime> room) {
     for (ClassTime lecture : room) {
-      if (check.start < lecture.start && check.start >= lecture.start) {
+      if (check.start < lecture.end && check.start >= lecture.start) {
         return true;
       }
     }
@@ -38,7 +41,7 @@ class MeetingScheduler {
   }
 
   public static void addRoomWithClassTime (List<List<ClassTime>> rooms, ClassTime newClass) {
-    List newRoom = new ArrayList<ClassTime>();
+    List<ClassTime> newRoom = new ArrayList<>();
     newRoom.add(newClass);
     rooms.add(newRoom);
   }
