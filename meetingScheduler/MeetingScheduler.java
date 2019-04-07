@@ -1,5 +1,7 @@
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.Collections;
 
 class MeetingScheduler {
 
@@ -12,7 +14,7 @@ class MeetingScheduler {
     if (classes.isEmpty()) {
       return rooms.size();
     }
-    
+
     for (int i = 0; i < classes.size(); i++) {
       for (int j = 0; j < rooms.size(); j++) {
         if (!requiresAnotherRoom(classes.get(i), rooms.get(j))) {
