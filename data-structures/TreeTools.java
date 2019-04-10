@@ -62,4 +62,27 @@ class TreeTools {
     }
     return minimum;
   }
+
+  public boolean isValidBST(TreeNode root) {
+    if (root == null) {
+      return true;
+    }
+
+    return helper(root.left, root.val, Long.MIN_VALUE) 
+        && helper(root.right, Long.MAX_VALUE, root.val);
+  }
+
+  // less than the highbound, greater than the lowbound
+  public boolean helper(TreeNode root, long highBound, long lowBound) {
+    if(root == null) {
+      return true;
+    }
+    
+    if (root.val < highBound && root.val > lowBound) {
+      return helper(root.left, root.val, lowBound)
+          && helper(root.right, highBound, root.val);
+    } else {
+      return false;
+    }
+  }
 }
