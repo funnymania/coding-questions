@@ -1,5 +1,3 @@
-import java.util.Hashtable;
-
 class CircularList {
 
   private int[] orderIds;
