@@ -1,3 +1,5 @@
+import java.util.Hashtable;
+ 
 class Main {
   public static void main (String[] args) {
     // Create a generic tree, test some tools
@@ -18,7 +20,21 @@ class Main {
       root.val
     );
     
-    // Create a hash table
-    
+    // Create a hash table for messages
+    Hashtable<String, String> ht = new Hashtable<>();
+
+    // username guarantees uniqueness, as we would only allow
+    // one username per user. If you use the same secret twice,
+    // you overwrite your previous message.
+    String username = "Shine, Pickaw!";
+    String secret = "bubblethought";
+    String message = "garblesour";
+
+    String key = HashUtils.hashSwitchCharsOfTwoStrings(username,secret);
+
+    ht.put(key, message);
+    System.out.println(
+      ht.get(key) + " has key " + key
+    );
   }
 }

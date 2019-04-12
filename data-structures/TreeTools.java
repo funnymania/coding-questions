@@ -1,6 +1,4 @@
 class TreeTools {
-  // TODO These methods revolve around an unbalanced, non-ordered tree.
-  //      Maybe look into working these for a different tree. 
   public static TreeNode findLeftmostNode(TreeNode head, int value) {
     if (head == null || head.val == value) {
       return head;
