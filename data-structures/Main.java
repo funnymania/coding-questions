@@ -1,5 +1,5 @@
 import java.util.Hashtable;
- 
+ // TODO set up Junit
 class Main {
   public static void main (String[] args) {
     // Create a generic tree, test some tools
@@ -35,6 +35,19 @@ class Main {
     ht.put(key, message);
     System.out.println(
       ht.get(key) + " has key " + key
+    );
+
+    // Create a linkedList
+    NodeLL oneLL = new NodeLL(7);
+    NodeLL twoLL = new NodeLL(8);
+    NodeLL threeLL = new NodeLL(9);
+
+    oneLL.next = twoLL;
+    twoLL.next = threeLL;
+
+    // Should be 8
+    System.out.println(
+      SingleLinkedList.find_kth_from_end(oneLL, 1).val
     );
   }
 }
