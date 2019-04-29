@@ -1,9 +1,18 @@
-// Log(n+m) or better required.
-// I solved this in linear time, by sorting both
-// into a single array. This results in |A| + |B| mem usage.
-// It fails on a test right now, so not perfect.
 
 class Solution {
+
+  // Solved in log time by understanding the definition of a median's
+  // requirements. We can do list arithmetic to find the point of both
+  // arrays in which all elements left of an index of one list
+  // are less than all elements to the right of the index of another.
+  public double findMedianSortedArraysLog(int[] A, int[] B) {
+
+    
+  }
+
+  // I solved this in linear time, by sorting both
+  // into a single array. This results in |A| + |B| mem usage.
+  // It fails on a test right now, so not perfect.
   public double findMedianSortedArrays(int[] A, int[] B) {
     int[] C = new int[A.length + B.length];
     
