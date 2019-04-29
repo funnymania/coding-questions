@@ -7,7 +7,7 @@ class Solution {
   // are less than all elements to the right of the index of another.
   public double findMedianSortedArraysLog(int[] A, int[] B) {
 
-    
+
   }
 
   // I solved this in linear time, by sorting both
@@ -18,10 +18,7 @@ class Solution {
     
     // For ease of coding, make sure A is the larger array.
     if (A.length < B.length) {
-      int[] swap = new int[B.length];
-      swap = B;
-      B = A;
-      A = swap;
+      return findMedianSortedArrays(B, A);
     }
     
     boolean isEven = C.length % 2 == 0
