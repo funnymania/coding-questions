@@ -1,6 +1,58 @@
 import java.util.HashMap;
 
 class Solution {
+
+  // The string "PAYPALISHIRING" is written in a zigzag pattern on a given number 
+  // of rows like this: (you may want to display this pattern in a fixed font for 
+  // better legibility)
+
+  // P   A   H   N
+  // A P L S I I G
+  // Y   I   R
+
+  // And then read line by line: "PAHNAPLSIIGYIR"
+
+  // Write the code that will take a string and make this conversion given a 
+  // number of rows
+  public String zigzagConversion(String s, int numRows) {
+    List<List<Character>> zigzag = new ArrayList<>();
+    
+    // Init rows.
+    for (int i = 0; i < numRows; i++) {
+      List<Character> newRow = new ArrayList<>();
+      zigzag.add(newRow);
+    }
+    
+    int i = 0;
+    int j = 0;
+    int z = 0;
+    while (z < s.length()) {
+      for (j = 0; j < numRows && z < s.length();) {
+        zigzag.get(j).add(s.charAt(z));
+        z += 1;
+        j += 1;
+      }
+      j -= 2;
+      while (j > 0 && z < s.length()) {
+        zigzag.get(j).add(s.charAt(z));
+        z++;
+        j--;
+      }
+    }
+    
+    char[] charResult = new char[s.length()];
+    
+    z = 0;
+    for (int k = 0; k < numRows; k++) {
+      for (int l = 0; l < zigzag.get(k).size(); l++) {
+        charResult[z] = zigzag.get(k).get(l);
+        z += 1;
+      }
+    }
+    
+    return new String(charResult);
+  }
+
   public int lengthOfLongestSubstring(String s) {
     Map<Character, Integer> hm = new HashMap<>();
     int maxCount = 0;
