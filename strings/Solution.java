@@ -2,6 +2,81 @@ import java.util.HashMap;
 
 class Solution {
 
+  // TODO: Cover Integer buffer overflows.
+  public int stringToIntegerAtoi(String str) {
+    int sign = 1;
+    char carry = ' ';
+    boolean signSet = false;
+    
+    // scan until ' ' gone.
+    int i = 0;
+    while(i < str.length()) {
+      Character checkMe = str.charAt(i);
+      
+      if (signSet) {
+        if (!Character.isDigit(checkMe)) {
+          return 0;
+        } else {
+          break;
+        }
+      } else {
+        if (checkMe == ' ') {
+          ;
+        }
+        else if (checkMe == '-') {
+          sign = -1;
+          signSet = true;
+        } else if (checkMe == '+') {
+          signSet = true;
+        } else if (!Character.isDigit(checkMe)) {
+          return 0;
+        } else {
+          break;
+        }
+      }
+      i += 1;
+    }
+    
+    if (i == str.length()) {
+      return 0;
+    }
+    
+    List<Integer> tmpStorage = new ArrayList<>();
+    
+    // scan all values which are numbers until non-number reached
+    while (i < str.length()) {
+      Character checkMe = str.charAt(i);
+      if (Character.isDigit(checkMe)) {
+        tmpStorage.add(checkMe - '0');
+      } else {
+        break;
+      }
+      i += 1;
+    }
+    
+    // if string contained numbers is empty, return 0
+    if (tmpStorage.isEmpty()) {
+      return 0;
+    }
+    
+    // convert string to integer
+    Double storage = 0.0;
+    int powCount = 0;
+    for (int j = tmpStorage.size() - 1; j >= 0; j--) {
+      storage += tmpStorage.get(j) * Math.pow(10, powCount);
+      powCount += 1;
+    }
+    
+    // return integer
+    if (storage > Integer.MAX_VALUE) {
+      return Integer.MAX_VALUE;
+    } else if (storage < Integer.MIN_VALUE) {
+      return Integer.MIN_VALUE;
+    } else {
+      return storage.intValue() * sign; 
+    }
+  }
+
   // The string "PAYPALISHIRING" is written in a zigzag pattern on a given number 
   // of rows like this: (you may want to display this pattern in a fixed font for 
   // better legibility)
