@@ -6,6 +6,25 @@ import java.lang.Integer;
 
 class Solution {
 
+  // Very good, but I don't understand it yet.
+  public boolean isPalindrome(int x) {
+    if (x < 0 || (x !=0 && x % 10 == 0)) {
+      return false;
+    }
+    
+    int hm = 0;
+    // test: 123
+    // hm: 32
+    //  x: 1
+    while (x > hm) {
+      hm = hm * 10 + (x % 10);
+      
+      x /= 10;
+    }
+    
+    return x == hm || x == hm/10;
+  }
+
   // TODO: Cover integer overflow
   // Given a 32-bit signed integer, reverse digits of an integer.
   //
@@ -31,7 +50,9 @@ class Solution {
   public int reverseInteger(int x) {
     int result = 0;
     Double heldResult = 0.0;
-    boolean isNegative = (x < 0);
+    int sign = x < 0
+      ? -1
+      : 1;
     int digitCnt = 0;
       
     if (x < 10 && x > -10) {
@@ -65,15 +86,14 @@ class Solution {
       heldResult += Math.pow(10, i) * storedNum.get(i);
     }
 
+    heldResult *= sign;
     // Take care of overflow...
     if (heldResult > Integer.MAX_VALUE
        || heldResult < Integer.MIN_VALUE
     ) {
       return 0;
     } else {
-      return isNegative
-        ? heldResult.intValue() * -1
-        : heldResult.intValue();
+      return heldResult.intValue();
     }
   }
 
