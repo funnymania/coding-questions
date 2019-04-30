@@ -2,10 +2,8 @@ import java.util.HashMap;
 
 class Solution {
 
-  // TODO: Cover Integer buffer overflows.
   public int stringToIntegerAtoi(String str) {
     int sign = 1;
-    char carry = ' ';
     boolean signSet = false;
     
     // scan until ' ' gone.
@@ -67,13 +65,15 @@ class Solution {
       powCount += 1;
     }
     
+    storage *= sign;
+    
     // return integer
     if (storage > Integer.MAX_VALUE) {
       return Integer.MAX_VALUE;
     } else if (storage < Integer.MIN_VALUE) {
       return Integer.MIN_VALUE;
     } else {
-      return storage.intValue() * sign; 
+      return storage.intValue(); 
     }
   }
 
