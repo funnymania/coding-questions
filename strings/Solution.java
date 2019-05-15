@@ -151,28 +151,28 @@ class Solution {
     return maxCount;
   }
 
-  // Updated, gross one. Untested. 
+  // Works, but times out on "gphyvqruxjmwhonjjrgumxjhfyupajxbjgthzdvrdqmdouuukeaxhjumkmmhdglqrrohydrmbvtuwstgkobyzjjtdtjroqpyusfsbjlusekghtfbdctvgmqzeybnwzlhdnhwzptgkzmujfldoiejmvxnorvbiubfflygrkedyirienybosqzrkbpcfidvkkafftgzwrcitqizelhfsruwmtrgaocjcyxdkovtdennrkmxwpdsxpxuarhgusizmwakrmhdwcgvfljhzcskclgrvvbrkesojyhofwqiwhiupujmkcvlywjtmbncurxxmpdskupyvvweuhbsnanzfioirecfxvmgcpwrpmbhmkdtckhvbxnsbcifhqwjjczfokovpqyjmbywtpaqcfjowxnmtirdsfeujyogbzjnjcmqyzciwjqxxgrxblvqbutqittroqadqlsdzihngpfpjovbkpeveidjpfjktavvwurqrgqdomiibfgqxwybcyovysydxyyymmiuwovnevzsjisdwgkcbsookbarezbhnwyqthcvzyodbcwjptvigcphawzxouixhbpezzirbhvomqhxkfdbokblqmrhhioyqubpyqhjrnwhjxsrodtblqxkhezubprqftrqcyrzwywqrgockioqdmzuqjkpmsyohtlcnesbgzqhkalwixfcgyeqdzhnnlzawrdgskurcxfbekbspupbduxqxjeczpmdvssikbivjhinaopbabrmvscthvoqqbkgekcgyrelxkwoawpbrcbszelnxlyikbulgmlwyffurimlfxurjsbzgddxbgqpcdsuutfiivjbyqzhprdqhahpgenjkbiukurvdwapuewrbehczrtswubthodv"
   public String longestPalindrome(String a) {
     if (s.length() == 0 || s.length() == 1) return s;
     
     int curLength = s.length();
     while (curLength > 1) {
-      for (int i=0; i+curLength<=s.length(); i++) {
+      for (int i = 0; i + curLength <= s.length(); i++) {
         if (curLength % 2 == 1) {
-          String test1 = s.substring(i, curLength / 2);
-          String test2 = s.substring((curLength / 2) + 1, curLength);
+          String test1 = s.substring(i, i+(curLength / 2));
+          String test2 = s.substring(i+(curLength / 2) + 1, i+curLength);
           StringBuilder test3 = new StringBuilder(test2);
           test3.reverse();
-          if (test1 == test3.toString()) {
-            return s.substring(i, curLength);
+          if (test1.equals(test3.toString())) {
+            return s.substring(i, i+curLength);
           }
         } else {
-          String test1 = s.substring(i, curLength / 2);
-          String test2 = s.substring((curLength / 2), curLength);
+          String test1 = s.substring(i, i+(curLength / 2));
+          String test2 = s.substring(i+(curLength / 2), i+curLength);
           StringBuilder test3 = new StringBuilder(test2);
           test3.reverse();
-          if (test1 == test3.toString()) {
-            return s.substring(i, curLength);
+          if (test1.equals(test3.toString())) {
+            return s.substring(i, i+curLength);
           }
         }
       }
