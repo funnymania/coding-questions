@@ -151,40 +151,33 @@ class Solution {
     return maxCount;
   }
 
-  // Initial solution, does not cover definition of palindrome
-  // including zero string dividers.
-  // Ex. abba is not a palindrome 
-  // Ex. aabaa is a palindrome
-  // Ex. b is a palindrome
-  // Ex. aaccaa is not a palindrome
+  // Updated, gross one. Untested. 
   public String longestPalindrome(String a) {
-    int pivot = a.length() / 2;
-    int lo = 0;
-    int hi = (pivot * 2) + 1;
+    if (s.length() == 0 || s.length() == 1) return s;
     
-    StringBuilder s = new StringBuilder(a);
-    
-    while (lo < s.length()) {
-      if (hi > s.length()) {
-        pivot -= 1;
-        lo = 0;
-        hi = (pivot * 2) + 1;
-      } else {
-        String one = s.substring(lo, lo + pivot + 1);
-        String two = s.substring(lo + pivot, hi);
-        StringBuilder temp = new StringBuilder(two);
-        String revtwo = temp.reverse().toString();
-        if (one.equals(revtwo)) {
-          String result = one + two.substring(1);
-          return result;
+    int curLength = s.length();
+    while (curLength > 1) {
+      for (int i=0; i+curLength<=s.length(); i++) {
+        if (curLength % 2 == 1) {
+          String test1 = s.substring(i, curLength / 2);
+          String test2 = s.substring((curLength / 2) + 1, curLength);
+          StringBuilder test3 = new StringBuilder(test2);
+          test3.reverse();
+          if (test1 == test3.toString()) {
+            return s.substring(i, curLength);
+          }
         } else {
-          lo += 1;
-          hi += 1;
+          String test1 = s.substring(i, curLength / 2);
+          String test2 = s.substring((curLength / 2), curLength);
+          StringBuilder test3 = new StringBuilder(test2);
+          test3.reverse();
+          if (test1 == test3.toString()) {
+            return s.substring(i, curLength);
+          }
         }
       }
+      curLength--;  
     }
-    
-    return "";
-    // Or, throw IllegalArgumentException
+    return s.substring(0,1);
   }
 }
