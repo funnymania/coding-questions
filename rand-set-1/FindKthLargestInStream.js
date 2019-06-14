@@ -12,6 +12,10 @@ var KthLargest = function (k, nums) {
 * @return {number}
 */
 KthLargest.prototype.add = function (val) {
+  if (val < this.listOfStream[this.listOfStream.length - this.kthLarge]) {
+    return this.listOfStream[this.listOfStream.length - this.kthLarge]
+  }
+
   // TODO: This should be a binary search, pretty sure findIndex is O(n) 
   let indexToInsertInto = this.listOfStream.findIndex((el) =>
     el > val
@@ -23,7 +27,7 @@ KthLargest.prototype.add = function (val) {
 
   this.listOfStream.splice(indexToInsertInto, 0, val)
 
-  return this.listOfStream[this.listOfStream.length - k]
+  return this.listOfStream[this.listOfStream.length - this.kthLarge]
 };
 
 
