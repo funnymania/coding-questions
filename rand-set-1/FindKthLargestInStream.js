@@ -2,7 +2,7 @@
  * @param {number} k
  * @param {number[]} nums
  */
-var KthLargest = function (k, nums) {
+let KthLargest = function (k, nums) {
   this.kthLarge = k
   this.listOfStream = nums.sort((a, b) => a - b)
 };
@@ -29,7 +29,26 @@ KthLargest.prototype.add = function (val) {
 
   return this.listOfStream[this.listOfStream.length - this.kthLarge]
 };
+function iterativeWithoutMemo(n) {
+  if (n == 0) return 0
+  if (n == 1) return 1
+  let a = 0
+  let b = 1
+  let result = 0
+  let cnt = 2
+  while (cnt <= n) {
+    result = a + b
+    a = b
+    b = result
+    cnt += 1
+  }
+  return result
+}
 
+
+console.log(
+  iterativeWithoutMemo(7)
+)
 
 let k = 3;
 let arr = [4, 5, 8, 2];
