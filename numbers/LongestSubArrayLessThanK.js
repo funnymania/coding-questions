@@ -6,6 +6,8 @@ const assert = require('assert')
  * 
  * O(n^2)
  */
+// TODO: Linear solution using begin and end markers for indices, and incrementing / 
+// decrementing them as numbers fit the constraint (<= k)
 let longestSubarray = (arr, k) => {
   let curLength = arr.length
   let curSum
