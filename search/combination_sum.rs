@@ -3,8 +3,7 @@
 impl Solution {
     pub fn combination_sum(candidates: Vec<i32>, target: i32) -> Vec<Vec<i32>> {
         let mut result = Vec::new();
-        let mut currentResult = Vec::new();
-        Solution::find_matches(&candidates, target, 0, &mut result, &mut currentResult, 0);
+        Solution::find_matches(&candidates, target, 0, &mut result, &mut Vec::new(), 0);
         result
     }
     
